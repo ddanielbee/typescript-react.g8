@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isProductionBuild = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
@@ -21,7 +23,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          isProductionBuild ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-modules-typescript-loader',
           {
             loader: 'css-loader',
@@ -35,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [isProductionBuild ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
         exclude: /\.module\.css$/,
       },
     ],
