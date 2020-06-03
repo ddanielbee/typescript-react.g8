@@ -10,7 +10,6 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testRegex: '(/src/.*\\.(test|spec))\\.(jsx?|tsx?)$',
-  testEnvironment: 'node',
   testPathIgnorePatterns: ['<rootDir>/dist'],
   collectCoverageFrom: ['src/**/*.ts', 'src/**/*.tsx'],
   coverageReporters: ['cobertura', 'text', 'html'],
@@ -21,7 +20,7 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/test-setup/__mocks__/styleMock.js',
   },
   modulePathIgnorePatterns: ['<rootDir>[/\\\\](dist|docs|node_modules)[/\\\\]'],
-  setupFilesAfterEnv: ['./test-setup/setupJestAfterEnv.ts'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom-global',
   testURL: 'https://my-test-page/',
 };

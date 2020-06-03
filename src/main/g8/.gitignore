@@ -1,6 +1,9 @@
 node_modules
+.build
 build
+web_modules
 dist
 .DS_Store
 .vscode
 coverage
+yarn-error.log

@@ -8,34 +8,17 @@
     "name": "$author_name$",
     "url": "$developer_url$"
   },
-  $if(use_snowpack.truthy)$
-  "scripts": {
-    "start": "snowpack dev",
-    "start:all": "concurrently \"yarn start\" \"yarn typecheck:watch\" \"yarn css:types:watch\"",
-    "build": "snowpack build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "typecheck": "tsc --noemit",
-    "typecheck:watch": "tsc --noemit --watch",
-    "css:types": "tcm src",
-    "css:types:watch": "tcm src --watch",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src"
-  },
-  $else$
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src",
-    "start": "webpack-dev-server --config webpack.config.js --progress",
+    "dev": "webpack-dev-server --config webpack.config.js --progress",
     "build": "webpack --config webpack.config.js --mode production",
     "typecheck": "tsc --noemit",
     "typecheck:watch": "tsc --noemit --watch",
-    "start:all": "concurrently \"yarn start\" \"yarn typecheck:watch\""
+    "dev:all": "concurrently \"yarn dev\" \"yarn typecheck:watch\""
   },
-  $endif$
   "dependencies": {
     "modern-css-reset": "1.1.0",
     "react": "16.13.1",
@@ -44,12 +27,16 @@
   "devDependencies": {
     "@testing-library/jest-dom": "5.5.0",
     "@testing-library/react": "10.0.3",
-    "@testing-library/user-event": "10.3.1",
+    "@testing-library/react-hooks": "3.2.1",
     "@types/jest": "25.2.1",
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.8",
+    "@types/testing-library__jest-dom": "5.0.3",
     "@typescript-eslint/eslint-plugin": "2.31.0",
     "@typescript-eslint/parser": "2.31.0",
+    "concurrently": "5.2.0",
+    "css-loader": "3.5.3",
+    "css-modules-typescript-loader": "4.0.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-config-prettier": "6.11.0",
@@ -58,28 +45,17 @@
     "eslint-plugin-prettier": "3.1.3",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
-    "concurrently": "5.2.0",
-    "jest": "25.4.0",
-    "jest-environment-jsdom-global": "2.0.2",
-    "prettier": "2.0.0",
-    "typescript": "3.9.4",
-    $if(use_snowpack.truthy)$
-    "@snowpack/app-scripts-react": "1.1.0",
-    "@snowpack/plugin-webpack": "1.1.0",
-    "snowpack": "2.0.0",
-    "typed-css-modules": "0.6.4"
-    $else$
-    "css-loader": "3.5.3",
-    "css-modules-typescript-loader": "4.0.0",
     "html-webpack-plugin": "4.2.0",
+    "jest": "26.0.1",
+    "jest-environment-jsdom-global": "2.0.2",
     "mini-css-extract-plugin": "0.9.0",
+    "prettier": "2.0.5",
     "style-loader": "1.2.1",
     "ts-jest": "25.5.0",
     "ts-loader": "7.0.1",
+    "typescript": "3.8.3",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"
-    $endif$
-    
   }
 }

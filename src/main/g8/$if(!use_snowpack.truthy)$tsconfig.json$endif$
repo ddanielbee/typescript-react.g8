@@ -29,7 +29,7 @@
         "name": "typescript-tslint-plugin"
       }
     ],
-    "typeRoots": ["./typings", "./node_modules/@types"],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "baseUrl": "."
   },
   "include": ["src/**/*", "test-setup/setupJestAfterEnv.ts"],

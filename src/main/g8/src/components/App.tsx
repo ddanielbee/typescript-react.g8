@@ -29,10 +29,15 @@ export const App: React.FunctionComponent = () => (
         </span>
       </li>
       <li>
+        $if(use_snowpack.truthy)$
         <span>
-          Webpack with dev server (yarn dev). If you prefer npm, delete yarn.lock first before
-          installing dependencies with npm.
+          Snowpack for building your app.
         </span>
+        $else$
+        <span>
+          Webpack with dev server (yarn dev).
+        </span>
+        $endif$
       </li>
       <li>
         <span>
@@ -48,10 +53,18 @@ export const App: React.FunctionComponent = () => (
         <span>
           CSS Modules as can be seen by this very styled{' '}
           <span className={styles['cyan-text']}>piece of text. </span>
+           $if(use_snowpack.truthy)$
+           CSS module type declarations can be emitted using{' '}
+          <a href="https://github.com/Quramy/typed-css-modules">
+            Typed CSS Modules.
+          </a>
+          Snowpack will take care of it during development and building of your app when using the yarn script start:all
+           $else$
           CSS module type declarations are also emitted on the fly by webpack using{' '}
           <a href="https://github.com/seek-oss/css-modules-typescript-loader">
             CSS Modules Typescript Loader
           </a>
+           $endif$
         </span>
       </li>
     </ul>
@@ -79,12 +92,12 @@ export const App: React.FunctionComponent = () => (
       </li>
       <li>
         <span>
-          <b>dev =&gt;</b> Starts a webpack dev server at port 8080 of localhost.
+          <b>start =&gt;</b> Starts a $if(use_snowpack.truthy)$snowpack$else$webpack$endif$ dev server at port 8080 of localhost.
         </span>
       </li>
       <li>
         <span>
-          <b>build =&gt;</b> Builds a production bundle with webpack.
+          <b>build =&gt;</b> Builds a production bundle with $if(use_snowpack.truthy)$snowpack and webpack$else$webpack$endif$.
         </span>
       </li>
       <li>
@@ -99,7 +112,7 @@ export const App: React.FunctionComponent = () => (
       </li>
       <li>
         <span>
-          <b>dev:all =&gt;</b> Runs webpack-dev-server &amp; tsc on watch mode in parallel.
+          <b>start:all =&gt;</b> Runs $if(use_snowpack.truthy)$snowpack's dev server, typed css modules on watch mode$else$webpack-dev-server$endif$ &amp; tsc on watch mode in parallel.
         </span>
       </li>
     </ul>

@@ -28,5 +28,12 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'import/extensions': 'off',
+    'import/order': 'off',
+    'import/no-cycle': 'off',
+    'import/no-unresolved': 'off', // Necessary to use typescript paths correctly
+    'react/prop-types': 'off', // Not Necessary when using typescript
+    'no-restricted-globals': 'off',
+    '@typescript-eslint/no-explicit-any': 'off', // Any is used in typeguards
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
 };
