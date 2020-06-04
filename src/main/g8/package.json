@@ -67,7 +67,7 @@
     "@snowpack/app-scripts-react": "1.1.0",
     "@snowpack/plugin-webpack": "1.1.0",
     "snowpack": "2.0.0",
-    "typed-css-modules": "0.6.4"
+    "@groooves/typed-css-modules": "0.6.4"
     $else$
     "css-loader": "3.5.3",
     "css-modules-typescript-loader": "4.0.0",
